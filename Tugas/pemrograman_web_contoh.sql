@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 13, 2025 at 12:40 PM
+-- Generation Time: Jun 15, 2025 at 01:29 AM
 -- Server version: 5.7.33
 -- PHP Version: 7.3.2
 
@@ -37,6 +37,13 @@ CREATE TABLE `buku` (
   `Stok` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `buku`
+--
+
+INSERT INTO `buku` (`ID`, `Judul`, `Penulis`, `Tahun_Terbit`, `Harga`, `Stok`) VALUES
+(1, '1', '1', 1, '1.00', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -50,6 +57,13 @@ CREATE TABLE `detail_pesanan` (
   `Kuantitas` int(11) NOT NULL,
   `Harga_Per_Satuan` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `detail_pesanan`
+--
+
+INSERT INTO `detail_pesanan` (`ID`, `Pesanan_ID`, `Buku_ID`, `Kuantitas`, `Harga_Per_Satuan`) VALUES
+(1, 1, 1, 2, '1.00');
 
 -- --------------------------------------------------------
 
@@ -71,7 +85,27 @@ CREATE TABLE `pelanggan` (
 
 INSERT INTO `pelanggan` (`ID`, `Nama`, `Alamat`, `Email`, `Telepon`) VALUES
 (7, 'Akbar', '1', '1@1.com', '1'),
-(8, 'Akbar2', '2', '2@gmail.com', '2');
+(8, 'Akbar2', '2', '2@gmail.com', '2'),
+(9, '1', '1', '1@gmail.com', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pengguna`
+--
+
+CREATE TABLE `pengguna` (
+  `ID` int(11) NOT NULL,
+  `Nama` varchar(50) NOT NULL,
+  `Katasandi` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pengguna`
+--
+
+INSERT INTO `pengguna` (`ID`, `Nama`, `Katasandi`) VALUES
+(1, 'Admin', 'qwerty');
 
 -- --------------------------------------------------------
 
@@ -85,6 +119,13 @@ CREATE TABLE `pesanan` (
   `Pelanggan_ID` int(11) NOT NULL,
   `Total_Harga` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pesanan`
+--
+
+INSERT INTO `pesanan` (`ID`, `Tanggal_Pesanan`, `Pelanggan_ID`, `Total_Harga`) VALUES
+(1, '2025-06-14', 7, '1.00');
 
 --
 -- Indexes for dumped tables
@@ -111,6 +152,12 @@ ALTER TABLE `pelanggan`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `pengguna`
+--
+ALTER TABLE `pengguna`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `pesanan`
 --
 ALTER TABLE `pesanan`
@@ -125,19 +172,25 @@ ALTER TABLE `pesanan`
 -- AUTO_INCREMENT for table `buku`
 --
 ALTER TABLE `buku`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `detail_pesanan`
 --
 ALTER TABLE `detail_pesanan`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `pelanggan`
 --
 ALTER TABLE `pelanggan`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `pengguna`
+--
+ALTER TABLE `pengguna`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `pesanan`
